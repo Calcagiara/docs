@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -644,6 +644,27 @@
   
   <span class="md-ellipsis">
     Workflows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/code-source/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code source
   </span>
   
 
@@ -2122,8 +2143,7 @@
 <p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_sklearnmodel&quot;</span><span class="p">,</span>
                             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearnserve&quot;</span><span class="p">,</span>
-                            <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;sklearn_model&quot;</span><span class="p">,</span>
-                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;model/cancer_classifier.pkl&#39;</span><span class="p">)</span>
 
 <span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -2147,7 +2167,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span>
 </code></pre></div>
 <p>When the attribute <code>service</code> appears, the model is ready to be used.</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;sklearn_model&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">test_input</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Please note that the scikit-learn model serving exposes also the Open API specification under <code>/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
@@ -2201,10 +2221,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>
