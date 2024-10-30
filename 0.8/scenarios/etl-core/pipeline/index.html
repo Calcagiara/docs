@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/scenarios/postgrest/data/">
+        <link rel="canonical" href="http://docs/user/scenarios/etl-core/pipeline/">
       
       
-        <link rel="prev" href="../intro/">
+        <link rel="prev" href="../scenario/">
       
       
-        <link rel="next" href="../postgrest/">
+        <link rel="next" href="../../mlsklearn/intro/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Insert data into the database - Digital Hub</title>
+        <title>Workflow - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#insert-data-into-the-database" class="md-skip">
+        <a href="#workflow" class="md-skip">
           Skip to content
         </a>
       
@@ -227,7 +227,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Insert data into the database
+              Workflow
             
           </span>
         </div>
@@ -1177,19 +1177,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
         
           
           <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
@@ -1203,7 +1203,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             DBT transformation
@@ -1217,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../etl-core/scenario/" class="md-nav__link">
+      <a href="../scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1235,10 +1235,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../etl-core/pipeline/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1247,6 +1256,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1678,19 +1688,19 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_8" >
         
           
           <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
@@ -1704,7 +1714,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_8">
             <span class="md-nav__icon md-icon"></span>
             API via PostgREST
@@ -1718,7 +1728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/" class="md-nav__link">
+      <a href="../../postgrest/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,19 +1746,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../postgrest/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,7 +1758,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1770,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../postgrest/" class="md-nav__link">
+      <a href="../../postgrest/postgrest/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1791,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apigw/" class="md-nav__link">
+      <a href="../../postgrest/apigw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2067,39 +2067,24 @@
                   
 
 
-<h1 id="insert-data-into-the-database">Insert data into the database</h1>
-<p>Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.</p>
-<p>Open a new notebook using the <strong><code>Python 3 (ipykernel)</code></strong> kernel.</p>
-<p>We will now insert some data into the database we created earlier. Copy the snippets of code from here and paste them in your notebook, then execute them with <em>Shift+Enter</em>. After running, Jupyter will create a new code cell.</p>
-<p>The notebook file is available in the <code>documentation/examples/postgrest</code> path within the repository of this documentation.</p>
-<p>Import required libraries:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-</code></pre></div></p>
-<p>Connect to the database. You will need the value of <strong>POSTGRES_URL</strong> you got from the owner's secret in the first stage of the scenario.
-<div class="highlight"><pre><span></span><code><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://owner-UrN9ct:88aX8tLFJ95qYU7@database-postgres-cluster/mydb&#39;</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Download a CSV file and parse it (may take a few minutes):
-<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B&quot;</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv&quot;</span>
+<h1 id="workflow">Workflow</h1>
+<p>We define a simple workflow, which will execute the ETL step:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/dbt_ci_pipeline.py&quot;</span>
 
-<span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">digitalhub_runtime_kfp.dsl</span> <span class="kn">import</span> <span class="n">pipeline_context</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p>The following will create a table and insert the dataframe into it. If it fails, resources allocated to the Jupyter workspace may be insufficient. The table will be created automatically, or replaced if it already exists.
-<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;readings&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s2">&quot;replace&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Run a test select query to check data has been successfully inserted:
-<div class="highlight"><pre><span></span><code><span class="n">select</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM readings LIMIT 3&quot;</span>
-<span class="n">select_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">select</span><span class="p">,</span><span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
-<span class="n">select_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></p>
-<p>If everything went right, a few rows are returned. We will now create a PostgREST service to expose this data via a REST API.</p>
+<span class="k">def</span> <span class="nf">myhandler</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">pipeline_context</span><span class="p">()</span> <span class="k">as</span> <span class="n">pc</span><span class="p">:</span>
+        <span class="n">s1_dataset</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s2">&quot;function-dbt&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-60&quot;</span><span class="p">})</span>
+</code></pre></div>
+<p>Here in the definition we use a simple DSL to represent the execution of our functions as steps of the workflow. The DSL <code>step</code> method generates a KFP step that internally makes the remote execution of the corresponding job. Note that the syntax for step is similar to that of function execution.</p>
+<p>Register the workflow:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pipeline_dbt&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kfp&quot;</span><span class="p">,</span> <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/dbt_ci_pipeline.py&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;myhandler&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>And run it, this time remotely, passing the URL key as a parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow_run</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
+</code></pre></div>
+<p>It is possible to monitor the execution in the Core console:</p>
 
 
 
