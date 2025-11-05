@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
@@ -280,19 +280,10 @@
                 
                   
                     
-                      <a href="https://scc-digitalhub.github.io/docs/0.14/dev">Dev</a>
-                    
-                  
-                
-                  
-                    
                       <a href="https://scc-digitalhub.github.io/docs/0.14/admin">Admin</a>
                     
                   
                 
-              
-              
-                <a href="https://scc-digitalhub.github.io/sdk-docs/0.14">SDK</a>
               
             </button>
           </div>
@@ -659,6 +650,29 @@
   
   <span class="md-ellipsis">
     Data and Transformations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    File Browser
     
   </span>
   
@@ -2668,6 +2682,77 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_13" id="__nav_7_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Data validation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_13">
+            <span class="md-nav__icon md-icon"></span>
+            Data validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/data_validation/scenario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3181,7 +3266,7 @@
     PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
 </li>
 </ul>
-<p>Typical Use Cases</p>
+<p>Typical Use Cases:</p>
 <ul>
 <li>
 <p>Command-line tools or scripts requiring persistent access without interactive login</p>
@@ -3196,7 +3281,7 @@
 <p>Access delegation to long-lived background jobs</p>
 </li>
 </ul>
-<h3 id="security-considerations">Security Considerations</h3>
+<h2 id="security-considerations">Security Considerations</h2>
 <p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
 <ul>
 <li>
@@ -3215,7 +3300,7 @@
 <h2 id="token-management-via-ui">Token management via UI</h2>
 <p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
 <p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
-<p>Select <em>configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
+<p>Select <em>Configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
 <p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
 <p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
 <p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>
