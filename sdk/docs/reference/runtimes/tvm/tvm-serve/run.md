@@ -36,6 +36,13 @@ The selected Model is pinned in this Run. Compiling another target does not chan
 a running service; use a versioned `model_path` to select an earlier build.
 `profile` must select a node compatible with the Model's architecture and CPU.
 
+These parameters configure the service; inference tensors are sent directly to its
+REST or gRPC endpoint. Request validation is implemented by the Go/Rust serving
+image and does not require new SDK parameters. To use the validation fixes, select
+an updated runtime build with `image`; the published Go `0.26.0-r2` and Rust
+`0.26.0-r1` examples predate them. See the
+[input validation guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#input-validation).
+
 ## Example
 
 ```python

@@ -560,6 +560,12 @@ spec:
 
 When the Run requests CPUs, CORE derives the thread count from CPUs divided by workers (at least one thread). To choose the number yourself, add `TVM_NUM_THREADS` to `envs`.
 
+Size `workers` and the pod's CPU/memory allocation for the expected concurrency.
+With the **unreleased Go source fixes**, a request waiting for a free Nuclio worker
+returns HTTP `503` / gRPC `RESOURCE_EXHAUSTED` when worker allocation times out.
+The published Go `0.26.0-r2` image can return HTTP `500` for this condition.
+This capacity limit is separate from tensor validation and native execution errors.
+
 When the Run is **RUNNING**, `status.service` reports the platform address.
 `status.inference_v2` contains `baseUrl`, `model`, `inferenceUrl`, `modelMetadataUrl`,
 `modelReadinessUrl`, `readinessUrl` and `livenessUrl` for the console client.
@@ -633,6 +639,42 @@ Rules for the requests:
 - `data` holds the values in row-major order, flat or nested.
 - Inputs are matched by name when every input has a name that matches the model; otherwise by position.
 - Supported data types: `FP32`, `FP64`, `INT8`, `INT16`, `INT32`, `INT64`, `UINT8`, `UINT16`, `UINT32`, `UINT64`. `FP16` is not supported.
+
+### Input validation
+
+!!! note "Source changes, not yet released"
+
+    The validation below requires a Go or Rust image built with the serving fixes.
+    The published Go `0.26.0-r2` and Rust `0.26.0-r1` images used in the examples
+    do not include these fixes. Choose the updated image in the serve Run's `image`
+    field after building and testing it. Existing compatible models and the
+    toolkit image can be reused when the Apache TVM version and commit are unchanged.
+
+Both runtimes validate requests against the loaded model before executing TVM:
+
+- Supply one tensor per model input, with the advertised datatype, rank and static
+  dimensions. Matching the total number of values alone is insufficient: `[1, 4]`
+  and `[2, 2]` are different shapes.
+- Negative dimensions in **model metadata** allow dynamic sizes. Request dimensions
+  must be nonnegative and the number of values must equal their product. A scalar
+  has shape `[]` and one value. A dynamic signature still depends on the shapes
+  supported by the compiled model.
+- Numeric values must be finite and fit their datatype. Integer values must be
+  integral: `1.0` and `1e1` are accepted, while `1.5` and out-of-range values are
+  rejected. Use integer JSON literals to retain full `INT64`/`UINT64` precision.
+- gRPC accepts typed `contents` or little-endian `raw_input_contents`. Do not combine
+  them in one request. Raw encoding requires exactly one buffer per input, with the
+  expected datatype and byte count.
+
+Input names retain the positional fallback described above; an unknown tensor name
+alone does not make a request invalid. The served **model name** must match for
+inference and metadata requests, including over gRPC.
+
+| Result | REST | gRPC | What to check |
+| --- | --- | --- | --- |
+| Invalid input | `400` | `INVALID_ARGUMENT` | Datatype, shape, values and payload encoding against model metadata. |
+| Unknown model | `404` | `NOT_FOUND` | The Run's `served_name`, otherwise the Function name; supply it explicitly to gRPC. |
+| TVM execution failure | `500` | Go: `UNKNOWN`; Rust: `INTERNAL` | Server logs for the native error. Rust returns a generic message to the client. |
 
 ---
 
@@ -857,6 +899,7 @@ an older cached image.
 | The compile or serve run stays **PENDING** | No node of the cluster has the architecture the run needs: see [Where the service runs](#where-the-service-runs). Check the profile/node selector, available nodes and pod events before choosing another target or Model. |
 | The serve pod restarts right after starting | The log explains why: the model was compiled with another TVM release, with `system_lib`, or uses an unsupported data type. Recompile it with the toolkit of the same release. |
 | `404` on `/v2/models/<name>` | The name is not the `served_name` of the run (by default, the function name). |
+| Inference returns `400` / `INVALID_ARGUMENT` | Compare the request datatype, full shape, value count and numeric ranges with model metadata. For gRPC, use typed or raw contents, never both. See [Input validation](#input-validation) for the runtime versions concerned. |
 | The endpoint cannot be reached from your computer | The default service is internal: use `dhcli port-forward`, or a platform-approved external route. |
 
 ---
