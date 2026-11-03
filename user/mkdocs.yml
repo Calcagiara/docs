@@ -27,6 +27,7 @@ nav:
           - "tasks/code-source.md"
           - "tasks/secrets.md"
           - "tasks/pat.md"
+          - "tasks/agents.md"
           #   - "tasks/git.md"
       - Data-related Tasks:
           - "data-tasks/data.md"
@@ -69,6 +70,7 @@ nav:
   - Extensions reference:
       - "extensions/overview.md"
       - "extensions/envoygw.md"
+      - "extensions/autoscaler.md"
 
   - CLI Reference:
       - "cli/installation.md"
