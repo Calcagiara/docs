@@ -54,6 +54,25 @@ have an empty body.
 
 The model expects one `FP32` picture of 640×640 pixels in NCHW order, and returns 8400 candidate boxes, each with 4 coordinates and 80 class scores.
 
+### Check request failures
+
+Read metadata from the deployed service each time you change the model or serving
+image. The Go/Rust validation fixes check datatype, rank, static dimensions, numeric
+ranges and value count before calling TVM. For example, this model requires
+`[1, 3, 640, 640]`; `[1, 3, 320, 1280]` is invalid even though both contain the same
+number of values. A wrong tensor name can still use positional matching, so it is
+not a reliable negative test.
+
+With those fixes, invalid tensors return HTTP `400` / gRPC `INVALID_ARGUMENT`;
+an unknown model returns `404` / `NOT_FOUND`. TVM execution failures return HTTP
+`500`; gRPC returns `UNKNOWN` in Go and `INTERNAL` in Rust. Inspect server logs for
+details. After testing a rejected request,
+send a valid one again to verify that inference still works.
+
+The published Go `0.26.0-r2` and Rust `0.26.0-r1` images below predate these fixes.
+Use an updated runtime build to test the new behavior. See
+[Input validation](../../../runtimes/tvm/#input-validation) for the complete contract.
+
 ## Send a picture
 
 Download a test picture:
