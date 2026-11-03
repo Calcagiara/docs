@@ -56,7 +56,6 @@ Digitalhub componet URLs:
   - Dashboard: http://192.168.76.2:30110
   - Jupyter: http://192.168.76.2:30040 (Create jupyter workspace from template in the coder dashboard before use)
   - Dremio: http://192.168.76.2:30120 (Create dremio workspace from template in the coder dashboard before use)
-  - Sqlpad: http://192.168.76.2:30140 (Create sqlpad workspace from template in the coder dashboard before use)
   - Grafana: http://192.168.76.2:30130 (Create grafana workspace from template in the coder dashboard before use)
   - Vscode: http://192.168.76.2:30190 (Create vscode workspace from template in the coder dashboard before use)
   - Docker Registry: http://192.168.76.2:30150

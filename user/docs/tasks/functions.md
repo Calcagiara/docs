@@ -90,7 +90,7 @@ You can delete a function from either its detail page or the list of functions, 
 
 A run represents the execution of a task through a function. As such, the starting point to create a run is the function it is based on. Select one of the functions you created. You will notice multiple tabs at the top: some of the `kind`-specific tabs correspond to a task that can be executed.
 
-![Function build tab](../images/console/function-build-tab.png)
+![Function build under RUNS tab](../images/console/function-build-tab.png)
 
 Click `CREATE` to create a new run. You will start a 3-steps process to create a run.
 

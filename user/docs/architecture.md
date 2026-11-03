@@ -144,7 +144,6 @@ Every data engineering process starts from data exploration, a task executed int
 The platform supports dynamic workspaces based on:
 
 * **JupyterLab**, for notebook based analysis
-* **SQLPad**, for SQL based data access
 * **Dremio**, for unified data access and analysis
 * **VSCode**, for a developer-centric, code-based approach
 

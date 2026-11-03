@@ -48,7 +48,6 @@ nav:
           - "components/code-toolbox.md"
           - Community Workspaces:
               - "components/dremio.md"
-              - "components/sqlpad.md"
               - "components/grafana.md"
   - Runtimes reference:
       - Overview: "runtimes/overview.md"
