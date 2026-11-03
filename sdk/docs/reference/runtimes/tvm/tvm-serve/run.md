@@ -38,9 +38,9 @@ a running service; use a versioned `model_path` to select an earlier build.
 
 These parameters configure the service; inference tensors are sent directly to its
 REST or gRPC endpoint. Request validation is implemented by the Go/Rust serving
-image and does not require new SDK parameters. To use the validation fixes, select
-an updated runtime build with `image`; the published Go `0.26.0-r2` and Rust
-`0.26.0-r1` examples predate them. See the
+image and does not require new SDK parameters. Go `0.26.0-r3` and Rust `0.26.0-r2`
+include these checks. Set `image` to the desired version if the platform default
+still uses an older runtime. See the
 [input validation guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#input-validation).
 
 ## Example

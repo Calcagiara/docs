@@ -230,9 +230,10 @@ separates its display name (`label`), standard TVM options as a JSON string (`ta
 and C++ linker settings (`linker`). The compiler and console use the same catalogue;
 neither Java nor the SDK contains a fixed target enumeration.
 
-Mount an override file and set `RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml`,
-then restart CORE. Keep all settings in one YAML document: the shared loader reads
-the first document only. Entries merge with the bundled profiles:
+Mount an override file, set
+`SPRING_CONFIG_ADDITIONAL_LOCATION=file:/etc/digitalhub/runtime-tvm.yaml` and restart
+CORE. Spring Boot loads the external file alongside the usual application settings.
+Omitted profiles and fields retain their bundled defaults:
 
 ```yaml
 runtime:
@@ -270,20 +271,25 @@ and `optimization.cross_cc_options` overrides `linker.options`.
 For compiler arguments, choose **Profile defaults** to inherit the YAML configuration,
 or **Custom arguments** to replace it. An explicit empty list clears those defaults.
 
-An override file keeps omitted profiles and fields. Supplying `target` replaces its
-whole definition rather than inheriting potentially incompatible CPU features.
+Lists replace lower-priority lists; `aliases: []` or `linker.options: []` clears them.
+Supplying `target` replaces its whole definition rather than inheriting potentially
+incompatible CPU features.
 When migrating older override files:
 
+- Replace `RUNTIME_TVM_CONFIG` with `SPRING_CONFIG_ADDITIONAL_LOCATION` and unset
+  the old variable. The dedicated TVM configuration path is no longer read.
 - Replace each `target` YAML mapping with a JSON string as shown above.
 - Move profile-level `cross-cc` to `linker.command`.
 - Move profile-level `cross-cc-options` to `linker.options`.
-- Combine settings from documents separated by `---` into one YAML document;
-  only the first document is loaded.
 
 This format applies only to the administrator's catalogue: an explicit Run `target`
 remains an object, and `optimization.cross_cc` / `optimization.cross_cc_options`
 remain Run options. SDK requests and model metadata are unchanged.
-Invalid target JSON or unknown target-profile fields prevent CORE from starting.
+Invalid target JSON or unknown configuration-file properties under `runtime.tvm`
+prevent CORE from starting. As in standard Spring Boot binding, unknown environment
+variables and JVM system properties are ignored. External files follow standard
+configuration precedence and profile rules. A configured file must exist unless its
+location starts with `optional:`.
 
 ### Explicit target for one run
 
@@ -454,7 +460,7 @@ A tuning can be reused only when these match:
 
 | Must match | Why it matters |
 | --- | --- |
-| TVM version and commit | Use a toolkit containing the same Apache TVM version and commit, e.g. `tvm-toolkit:0.26.0-r1`. |
+| TVM version and commit | Use a toolkit containing the same Apache TVM version and commit, e.g. `tvm-toolkit:0.26.0-r2`. |
 | Target | Same effective target, including CPU features **and** `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `amd64_native` the CPU model of the node counts too. |
 | IR | Matching source/IR identity; changing the model or conversion can invalidate the database. |
 | Coverage | All selected tunable functions need valid records unless `allow_partial_tuning` is `true`. Unselected operations keep default schedules. |
@@ -561,9 +567,9 @@ spec:
 When the Run requests CPUs, CORE derives the thread count from CPUs divided by workers (at least one thread). To choose the number yourself, add `TVM_NUM_THREADS` to `envs`.
 
 Size `workers` and the pod's CPU/memory allocation for the expected concurrency.
-With the **unreleased Go source fixes**, a request waiting for a free Nuclio worker
+With Go `0.26.0-r3`, a request waiting for a free Nuclio worker
 returns HTTP `503` / gRPC `RESOURCE_EXHAUSTED` when worker allocation times out.
-The published Go `0.26.0-r2` image can return HTTP `500` for this condition.
+The older Go `0.26.0-r2` image can return HTTP `500` for this condition.
 This capacity limit is separate from tensor validation and native execution errors.
 
 When the Run is **RUNNING**, `status.service` reports the platform address.
@@ -642,13 +648,13 @@ Rules for the requests:
 
 ### Input validation
 
-!!! note "Source changes, not yet released"
+!!! note "Runtime image versions"
 
-    The validation below requires a Go or Rust image built with the serving fixes.
-    The published Go `0.26.0-r2` and Rust `0.26.0-r1` images used in the examples
-    do not include these fixes. Choose the updated image in the serve Run's `image`
-    field after building and testing it. Existing compatible models and the
-    toolkit image can be reused when the Apache TVM version and commit are unchanged.
+    Go `0.26.0-r3` and Rust `0.26.0-r2` include the validation below. Older Go
+    `0.26.0-r2` and Rust `0.26.0-r1` images do not include these fixes. Select the
+    desired version with the serve Run's `image` field or configure the platform
+    default. Existing compatible models can be reused when the Apache TVM version
+    and commit are unchanged.
 
 Both runtimes validate requests against the loaded model before executing TVM:
 
@@ -709,7 +715,7 @@ test it; NodePort/LoadBalancer access depends on the platform network configurat
     docker run --rm -p 8080:8080 -p 9000:9000 \
       -v "$PWD/yolo-model:/shared/model" \
       -e TVM_MODEL_NAME=yolo-function \
-      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
     ```
 
     In another terminal:
@@ -730,7 +736,7 @@ test it; NodePort/LoadBalancer access depends on the platform network configurat
     docker run --rm -p 8080:8080 -p 9000:9000 \
       -v "$PWD/yolo-model:/shared/model" \
       -e TVM_MODEL_NAME=yolo-function \
-      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
     ```
 
     For a 32-bit OS, download `yolo-function-arm32` instead. For a 64-bit OS, use `arm64` (or `arm64_pi5` on Pi 5). Docker picks the image variant of the device automatically. This standalone example does not use CORE's init image.
@@ -770,10 +776,25 @@ The `build` and `compile` Jobs run the `tvm-toolkit` image, which contains only 
 
 The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (`TVM_TARGET`, `TVM_OPT_LEVEL`, ...). When the script ends, the platform copies the key of the published Model into the function field `ir_model` or `so_model`.
 
-Publication uses direct HTTP calls to Core, not the DigitalHub SDK. Core supplies
-signed upload URLs and the storage path. The scripts upload the artifacts, including
-large files through multipart uploads, register the Model and verify the run output.
-The `DHCORE_*` credentials are used only for Core and are not forwarded to storage.
+Publication uses direct HTTP calls to CORE, without installing or calling the
+DigitalHub SDK. It follows the same Model lifecycle: `CREATED` → `UPLOADING` →
+`READY`. The publisher registers the Model, uploads its artifacts through signed
+storage URLs, records file information and marks the Model ready before recording
+its key in the Run outputs. Large files use multipart uploads. Up to 100 file
+entries are stored in `status.files`; larger collections use CORE's file index.
+Upload failures mark the Model `ERROR`.
+
+A `READY` Model is distinct from a `COMPLETED` build or compile Run. Wait for the
+Run to complete successfully before starting the next action. Output registration
+and Function reference updates retry transient failures up to three attempts; if
+either cannot be confirmed, the Run fails and the registered Model remains
+recoverable from the log and, when recorded, `run.status.outputs`.
+
+If the monitor advances a Run from `PENDING` to `RUNNING` during an output update,
+CORE can reject the stale update with `Invalid transition from state RUNNING to
+state PENDING.` The publisher rereads the Run and retries the merge; other HTTP
+`400` responses to Run updates remain errors. The `DHCORE_*` credentials are used
+only for CORE and are not forwarded to storage.
 
 ---
 
@@ -783,14 +804,14 @@ The `serve` action can use two images. They read the same model folder, expose t
 
 ```yaml
 spec:
-  image: ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1
+  image: ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2
 ```
 
 Each image is multi-arch: the same tag serves `amd64`, `arm64` and `arm/v7` nodes, and each node downloads its own variant. There is no image to choose per architecture.
 
 | | Go (default) | Rust |
 | --- | --- | --- |
-| Image | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2` | `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1` |
+| Image | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3` | `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2` |
 | Server | Nuclio processor with a native `tvm` runtime | Standalone `tvm-serve` server |
 | How it calls TVM | Go, through cgo and the TVM C API | Rust, through the TVM C API |
 | Parallel requests | One Nuclio worker per `workers`, each with its own model copy | One thread per `workers`, each with its own model copy |
@@ -844,19 +865,19 @@ Administrators choose the images with these environment variables of the Core:
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `RUNTIME_TVM_CONFIG` | bundled YAML only | Optional external YAML location, e.g. `file:/etc/digitalhub/runtime-tvm.yaml`; restart CORE after changing it. |
-| `RUNTIME_TVM_BUILDER_ONNX`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1` | Image of `build` for ONNX models. |
-| `RUNTIME_TVM_BUILDER_TFLITE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1` | Image of `build` for TFLite models. |
-| `RUNTIME_TVM_COMPILER`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1` | Image of `compile`. |
-| `RUNTIME_TVM_SERVE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2` | Default image of `serve`, overridden by the run's `image` field. |
+| `SPRING_CONFIG_ADDITIONAL_LOCATION` | no additional file | Additional Spring Boot configuration location, e.g. `file:/etc/digitalhub/runtime-tvm.yaml`; restart CORE after changing it. |
+| `RUNTIME_TVM_BUILDER_ONNX`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r2` | Image of `build` for ONNX models. |
+| `RUNTIME_TVM_BUILDER_TFLITE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r2` | Image of `build` for TFLite models. |
+| `RUNTIME_TVM_COMPILER`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r2` | Image of `compile`. |
+| `RUNTIME_TVM_SERVE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3` | Default image of `serve`, overridden by the run's `image` field. |
 | `RUNTIME_TVM_HOME_DIR`{: style="white-space: nowrap" } | `/shared` | Working folder inside the pods. |
 | `RUNTIME_TVM_VOLUME_SIZE`{: style="white-space: nowrap" } | `4Gi` | Default size of the working volume. |
 | `RUNTIME_TVM_USER_ID`, `RUNTIME_TVM_GROUP_ID` | platform user and group | User and group the pods run as. |
 
-To use Rust as the platform default, set `RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1` on Core. A single run can still select another image with `image`.
+To use Rust as the platform default, set `RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2` on Core. A single run can still select another image with `image`.
 
 These images contain Apache TVM `0.26.0`: toolkit and Rust use image revision
-`0.26.0-r1`, while Go uses `0.26.0-r2`. Different image revisions can contain the
+`0.26.0-r2`, while Go uses `0.26.0-r3`. Different image revisions can contain the
 same Apache TVM version and commit.
 
 A custom image must support the architecture of the nodes on which the model is served. A multi-arch image allows the same tag to be used across different architectures.

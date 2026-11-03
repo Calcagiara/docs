@@ -57,20 +57,20 @@ The model expects one `FP32` picture of 640×640 pixels in NCHW order, and retur
 ### Check request failures
 
 Read metadata from the deployed service each time you change the model or serving
-image. The Go/Rust validation fixes check datatype, rank, static dimensions, numeric
+image. Go `0.26.0-r3` and Rust `0.26.0-r2` check datatype, rank, static dimensions, numeric
 ranges and value count before calling TVM. For example, this model requires
 `[1, 3, 640, 640]`; `[1, 3, 320, 1280]` is invalid even though both contain the same
 number of values. A wrong tensor name can still use positional matching, so it is
 not a reliable negative test.
 
-With those fixes, invalid tensors return HTTP `400` / gRPC `INVALID_ARGUMENT`;
+Invalid tensors return HTTP `400` / gRPC `INVALID_ARGUMENT`;
 an unknown model returns `404` / `NOT_FOUND`. TVM execution failures return HTTP
 `500`; gRPC returns `UNKNOWN` in Go and `INTERNAL` in Rust. Inspect server logs for
 details. After testing a rejected request,
 send a valid one again to verify that inference still works.
 
-The published Go `0.26.0-r2` and Rust `0.26.0-r1` images below predate these fixes.
-Use an updated runtime build to test the new behavior. See
+Older Go `0.26.0-r2` and Rust `0.26.0-r1` images predate these validation fixes.
+Use the versions shown below to test this behavior. See
 [Input validation](../../../runtimes/tvm/#input-validation) for the complete contract.
 
 ## Send a picture
@@ -170,10 +170,10 @@ ls yolo-model        # metadata.json  model.so
 docker run --rm -p 8080:8080 -p 9000:9000 \
   -v "$PWD/yolo-model:/shared/model" \
   -e TVM_MODEL_NAME=yolo-function \
-  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
 ```
 
-To use the Rust server instead, replace the image with `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1`.
+To use the Rust server instead, replace the image with `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2`.
 
 **3. Test it** in another terminal: set `URL = "http://localhost:8080"` in `client.py`:
 
@@ -211,7 +211,7 @@ If the CLI is not installed on the device, download the Model on your computer a
 docker run --rm -p 8080:8080 -p 9000:9000 \
   -v "$PWD/yolo-model:/shared/model" \
   -e TVM_MODEL_NAME=yolo-function \
-  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
 ```
 
 **3. Test it** from any computer of the same network, with `URL = "http://<device>:8080"` in `client.py`.
