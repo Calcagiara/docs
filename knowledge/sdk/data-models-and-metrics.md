@@ -66,7 +66,7 @@ Use for reports, plots, logs, HTML, or zip archives:
 
 ```python
 def generate_report(project):
-    return project.log_artifact(name="report-file", kind="artifact", source="/tmp/report.json")
+    return project.log_artifact(name="report-file", source="/tmp/report.json")
 ```
 
 ---

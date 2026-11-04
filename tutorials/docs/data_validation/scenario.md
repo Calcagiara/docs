@@ -57,7 +57,7 @@ def main(project, di):
     with open("report.json", "w") as f:
       f.write(report.to_json())
 
-    project.log_artifact(kind="artifact", name=f"{di.name}_validation-report.json", source="report.json")
+    project.log_artifact(name=f"{di.name}_validation-report.json", source="report.json")
 
     # persist report
     return report.to_json()

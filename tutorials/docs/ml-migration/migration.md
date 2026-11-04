@@ -345,8 +345,8 @@ It is possible to upload the data artifacts via UI or programmatically:
 
 ```python
 
-project.log_artifact("train-data", kind="artifact", source="training.tar.gz")
-project.log_artifact("validation-data", kind="artifact", source="validation.tar.gz")
+project.log_artifact(name="train-data", source="training.tar.gz")
+project.log_artifact(name="validation-data", source="validation.tar.gz")
 ```
 
 ### Register function

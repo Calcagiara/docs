@@ -356,7 +356,7 @@ To create a video source in MJPEG format we will use the [go2rtc.org](https://go
 For demo purposes, we will use a test video and create a presigned link to share it with the go2rtc container. Indeed, it is possible to use any arbitrary video source for the same purpose.
 
 ```python
-project.log_artifact("video", kind="artifact", source="video.mp4")
+project.log_artifact(name="video", source="video.mp4")
 ```
 
 To create a presigned S3 link, it is sufficient to do this using Core UI. Access the file in the browser and share it. This will generate the presigned link of defined duration.
