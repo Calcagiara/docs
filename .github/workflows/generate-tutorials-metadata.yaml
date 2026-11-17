@@ -5,8 +5,7 @@ on:
     branches:
       - main
     paths:
-      - tutorials/docs/**/metadata.yaml
-      - generate_tutorials_metadata.py
+      - config.env
 concurrency:
   group: update-docs
   cancel-in-progress: false
@@ -19,13 +18,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.12'
       - run: |
-          git fetch --prune --unshallow --tags
-          git config --global user.name '${{ github.actor }}'
-          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+          git fetch --prune --unshallow --tags origin "+refs/heads/*:refs/remotes/origin/*"
+          git checkout main
+          set -a
+          source config.env
+          echo "Action triggered on main; stable version is $STABLE_VERSION"
+          git checkout $STABLE_VERSION
+          pip install pyyaml
           echo "Generating tutorials metadata yaml"
           python generate_tutorials_metadata.py
-          git add --all
-          git commit -m "Auto-generate tutorials-metadata.yaml" --allow-empty
+          git checkout main
+          mv -f tutorials-metadata-new.yaml tutorials-metadata.yaml
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+          git add tutorials-metadata.yaml
+          git commit -m "Auto-generate tutorials-metadata.yaml from update on config.env" --allow-empty
           git push

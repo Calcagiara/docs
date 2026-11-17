@@ -1,5 +1,5 @@
-name: generate-docs-on-config-update
-run-name: Generate docs on config update
+name: update-docs
+run-name: Update docs
 on:
   push:
     branches:
