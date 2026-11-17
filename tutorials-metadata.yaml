@@ -1,282 +1,329 @@
 base_path: /tutorials/docs
-docs: https://scc-digitalhub.github.io/docs/0.15/tutorials
-repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs
+docs: https://scc-digitalhub.github.io/docs/0.16/tutorials
+repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs
 tutorials:
 - description: This tutorial shows how to protect services with Guardrails.
   dir: guardrails
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/guardrails/basic
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/guardrails/basic
   name: AI and Service Guardrails
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/guardrails/guardrails-simple.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/guardrails
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/guardrails/guardrails-simple.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/guardrails
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/guardrails/basic
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/guardrails/basic
     file: guardrails/basic.md
     name: Protecting Services with Guardrails
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/guardrails/basic.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/guardrails/nemoguardrails
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/guardrails/basic.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/guardrails/nemoguardrails
     file: guardrails/nemoguardrails.md
     name: Protecting LLMs with NeMo Guardrails
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/guardrails/nemoguardrails.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/guardrails/guardrailsai
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/guardrails/nemoguardrails.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/guardrails/guardrailsai
     file: guardrails/guardrailsai.md
     name: Protecting LLMs with Guardrails
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/guardrails/guardrailsai.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/guardrails/guardrailsai.md
 - description: In this scenario, we download some data into a Postgres database, then
     use PostgREST - a tool to make Postgres tables accessible via REST API - to expose
     this data and run a simple request to view the results.
   dir: postgrest
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/postgrest/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/postgrest/intro
   name: API via PostgREST
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/postgrest/insert_data_into_postgres.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/postgrest
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/postgrest/insert_data_into_postgres.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/postgrest
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/postgrest/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/postgrest/intro
     file: postgrest/intro.md
     name: PostgREST scenario introduction
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/postgrest/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/postgrest/data
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/postgrest/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/postgrest/data
     file: postgrest/data.md
     name: Insert data into the database
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/postgrest/data.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/postgrest/postgrest
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/postgrest/data.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/postgrest/postgrest
     file: postgrest/postgrest.md
     name: Create PostgREST service
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/postgrest/postgrest.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/postgrest/apigw
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/postgrest/postgrest.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/postgrest/apigw
     file: postgrest/apigw.md
     name: Expose service externally
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/postgrest/apigw.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/postgrest/apigw.md
 - description: We collect some data regarding organizations, analyze and transform
     it, then expose the resulting dataset.
   dir: etl-core
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl-core/scenario
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl-core/scenario
   name: DBT transformation
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/etl-core/etl-core.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/etl-core
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/etl-core/etl-core.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/etl-core
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl-core/scenario
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl-core/scenario
     file: etl-core/scenario.md
     name: ETL with digitalhub-core and DBT scenario introduction
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl-core/scenario.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl-core/pipeline
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl-core/scenario.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl-core/pipeline
     file: etl-core/pipeline.md
     name: Workflow
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl-core/pipeline.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl-core/pipeline.md
 - description: This scenario implements a simple data validation function, which evaluates
     the correctness of a CSV table by leveraging an open source library, Frictionless.
   dir: data_validation
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/data_validation/scenario
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/data_validation/scenario
   name: Data validation
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/data_validation
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/data_validation
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/data_validation/scenario
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/data_validation/scenario
     file: data_validation/scenario.md
     name: Data validation
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/data_validation/scenario.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/data_validation/scenario.md
 - description: In this scenario we will learn how to use Dremio to transform data
     and create some virtual datasets on top of it. Then, we will visualize the transformed
     data in a dashboard created with Grafana, by importing a template.
   dir: dremio_grafana
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/dremio_grafana/scenario
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/dremio_grafana/scenario
   name: Dremio transformation
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/dremio_grafana
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/dremio_grafana
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/dremio_grafana/scenario
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/dremio_grafana/scenario
     file: dremio_grafana/scenario.md
     name: Data transformation and usage with Dremio and Grafana
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/dremio_grafana/scenario.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/dremio_grafana/scenario.md
 - description: Here we explore a simple yet realistic scenario. We collect some data
     regarding traffic, analyze and transform it, then expose the resulting dataset.
   dir: etl
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/intro
   labels:
   - etl
   name: Extract-Transform-Load
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/etl/etl.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/etl
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/etl/etl.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/etl
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/intro
     file: etl/intro.md
     name: ETL scenario introduction
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/collect
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/collect
     file: etl/collect.md
     name: Collect the data
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl/collect.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/process
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl/collect.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/process
     file: etl/process.md
     name: Process the data
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl/process.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/pipeline
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl/process.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/pipeline
     file: etl/pipeline.md
     name: Workflow
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl/pipeline.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/expose
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl/pipeline.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/expose
     file: etl/expose.md
     name: Expose datasets as API
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl/expose.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/streamlit
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl/expose.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/etl/streamlit
     file: etl/streamlit.md
     name: Visualize data with Streamlit
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/etl/streamlit.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/etl/streamlit.md
 - description: The Flower framework allows for running federated learning tasks where
     different client nodes perform local training and cooperatively create a more
     robust solution without exchanging the data, but only the weight necessary to
     progress the training process.
   dir: flower
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/flower/flower
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/flower/flower
   labels:
   - flower
   name: Flower Federated Learning
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/fl/flower-tutorial.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/flower
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/fl/flower-tutorial.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/flower
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/flower/flower
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/flower/flower
     file: flower/flower.md
     name: Federated Learning with Flower
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/flower/flower.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/flower/flower.md
+- dir: hydra
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/hydra/hydra-lightning
+  name: Hydra training and HPO template
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/hydra
+  steps:
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/hydra/hydra-lightning
+    file: hydra/hydra-lightning.md
+    name: Lightning Hydra Template
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/hydra/hydra-lightning.md
+- description: In this tutorial we compile a YOLOv8n ONNX model into native code with
+    the TVM runtime, serve it through the Open Inference v2 protocol and test it from
+    a local computer with a CLI port-forward.
+  dir: tvm
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/tvm/intro
+  name: 'MLOps: Compiled models with TVM'
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/tvm
+  steps:
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/tvm/intro
+    file: tvm/intro.md
+    name: 'Compiled models with TVM: introduction'
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/tvm/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/tvm/deploy
+    file: tvm/deploy.md
+    name: Build, compile and serve the model
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/tvm/deploy.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/tvm/test
+    file: tvm/test.md
+    name: Test the model
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/tvm/test.md
 - description: This scenario provides a quick overview of developing and deploying
     generic machine learning applications using the functionalities of the platform.
   dir: ml
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/ml/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/ml/intro
   name: 'MLOps: Custom ML model training'
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/ml/01-ml.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/ml
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/ml/01-ml.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/ml
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/ml/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/ml/intro
     file: ml/intro.md
     name: Custom ML scenario introduction
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/ml/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/ml/deploy
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/ml/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/ml/deploy
     file: ml/deploy.md
     name: Deploy and expose the model
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/ml/deploy.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/ml/deploy.md
 - description: With the platform it is possible to create and serve LLM HuggingFace-compatible-models.
     Specifically, it is possible to serve directly the LLM models from the HuggingFace
     catalogue provided the id of the model or to serve the fine-tuned model from the
     specified path, such as S3.
   dir: mlllm
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlllm/llm
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlllm/llm
   name: 'MLOps: Large Language Models'
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/mlllm/classification-generation.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/mlllm
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/mlllm/classification-generation.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/mlllm
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlllm/llm
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlllm/llm
     file: mlllm/llm.md
     name: Managing LLM Models
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlllm/llm.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlllm/llmkubeai
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlllm/llm.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlllm/llmkubeai
     file: mlllm/llmkubeai.md
     name: Managing LLM Models with KubeAI Runtime
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlllm/llmkubeai.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlllm/llmkubeai.md
 - description: This scenario provides a quick overview of developing and deploying
     a machine learning application based on model tracked with MLFlow framework using
     the functionalities of the platform.
   dir: mlmlflow
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlmlflow/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlmlflow/intro
   name: 'MLOps: MLflow ML models'
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/mlmlflow/01-mlflow.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/mlmlflow
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/mlmlflow/01-mlflow.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/mlmlflow
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlmlflow/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlmlflow/intro
     file: mlmlflow/intro.md
     name: MLFLow ML scenario introduction
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlmlflow/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlmlflow/deploy
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlmlflow/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlmlflow/deploy
     file: mlmlflow/deploy.md
     name: Deploy and expose the model
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlmlflow/deploy.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlmlflow/deploy.md
+- dir: ml-migration
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/ml-migration/migration
+  name: 'MLOps: Migrating an existing ML model to platform'
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/ml-migration
+  steps:
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/ml-migration/migration
+    file: ml-migration/migration.md
+    name: Language Translation
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/ml-migration/migration.md
 - description: This scenario provides a quick overview of developing and deploying
     a scikit-learn machine learning application using the functionalities of the platform.
   dir: mlsklearn
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlsklearn/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlsklearn/intro
   name: 'MLOps: Scikit-learn ML models'
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/mlsklearn/01-mlsklearn.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/mlsklearn
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/mlsklearn/01-mlsklearn.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/mlsklearn
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlsklearn/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlsklearn/intro
     file: mlsklearn/intro.md
     name: Scikit-learn ML scenario introduction
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlsklearn/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlsklearn/training
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlsklearn/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlsklearn/training
     file: mlsklearn/training.md
     name: Training the model
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlsklearn/training.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlsklearn/deploy
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlsklearn/training.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlsklearn/deploy
     file: mlsklearn/deploy.md
     name: Deploy and expose the model
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlsklearn/deploy.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlsklearn/deploy.md
 - description: This tutorial exposes a speech-to-text model using the KubeAI runtime.
   dir: mlspeech
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlspeech/kubeaispeech
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlspeech/kubeaispeech
   name: 'MLOps: Speech to Text'
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/mlspeech
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/mlspeech
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/mlspeech/kubeaispeech
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/mlspeech/kubeaispeech
     file: mlspeech/kubeaispeech.md
     name: Managing Speech-to-Text Models with KubeAI Runtime
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/mlspeech/kubeaispeech.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/mlspeech/kubeaispeech.md
 - description: In this tutorial we  demonstrate how to deploy a Visual Question Answering
     (VQA) service using the BLIP model from Salesforce and serve it via the OpenInference
     runtime on the platform.
   dir: openinference
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/openinference/openinference
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/openinference/openinference
   name: Open Inference Model Serving
-  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/examples/openinference/openinference.ipynb
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/openinference
+  notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/examples/openinference/openinference.ipynb
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/openinference
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/openinference/openinference
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/openinference/openinference
     file: openinference/openinference.md
     name: Exposing Open Inference v2 Services
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/openinference/openinference.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/openinference/openinference.md
 - description: In this scenario, we create a Retrieval-Augmented Generation (RAG)
     application, a chatbot able to take new documents, learn from their contents and
     answer questions related to them.
   dir: rag
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/rag/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/rag/intro
   name: Retrieval-Augmented Generation
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/rag
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/rag
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/rag/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/rag/intro
     file: rag/intro.md
     name: Retrieval-Augmented Generation
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/rag/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/rag/llm
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/rag/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/rag/llm
     file: rag/llm.md
     name: LLM
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/rag/llm.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/rag/knowledge-base
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/rag/llm.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/rag/knowledge-base
     file: rag/knowledge-base.md
     name: Building the knowledge base
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/rag/knowledge-base.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/rag/rag
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/rag/knowledge-base.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/rag/rag
     file: rag/rag.md
     name: RAG application with LangChain
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/rag/rag.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/rag/webui
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/rag/rag.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/rag/webui
     file: rag/webui.md
     name: Agent Web UI
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/rag/webui.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/rag/webui.md
+- dir: servicegraph
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/servicegraph/servicegraph
+  name: Service Graph
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/servicegraph
+  steps:
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/servicegraph/servicegraph
+    file: servicegraph/servicegraph.md
+    name: Creating Distributed Anonymized Streaming with ServiceGraph
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/servicegraph/servicegraph.md
 - description: In this scenario, we fine-tune Whisper, a model for speech-to-text
     recognition.
   dir: whisper-fine-tuning
-  docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/whisper-fine-tuning/intro
+  docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/whisper-fine-tuning/intro
   name: Whisper fine-tuning
-  repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/whisper-fine-tuning
+  repository: https://github.com/scc-digitalhub/docs/tree/0.16/tutorials/docs/whisper-fine-tuning
   steps:
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/whisper-fine-tuning/intro
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/whisper-fine-tuning/intro
     file: whisper-fine-tuning/intro.md
     name: Fine-tuning speech-to-text
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/whisper-fine-tuning/intro.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/whisper-fine-tuning/create-dataset
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/whisper-fine-tuning/intro.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/whisper-fine-tuning/create-dataset
     file: whisper-fine-tuning/create-dataset.md
     name: Create and process dataset
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/whisper-fine-tuning/create-dataset.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/whisper-fine-tuning/fine-tuning
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/whisper-fine-tuning/create-dataset.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/whisper-fine-tuning/fine-tuning
     file: whisper-fine-tuning/fine-tuning.md
     name: Fine-tuning
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/whisper-fine-tuning/fine-tuning.md
-  - docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/whisper-fine-tuning/convert-test
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/whisper-fine-tuning/fine-tuning.md
+  - docs: https://scc-digitalhub.github.io/docs/0.16/tutorials/whisper-fine-tuning/convert-test
     file: whisper-fine-tuning/convert-test.md
     name: Convert to faster-whisper and test
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/whisper-fine-tuning/convert-test.md
+    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.16/tutorials/docs/whisper-fine-tuning/convert-test.md
