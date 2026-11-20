@@ -33,10 +33,17 @@ adapters = [{"name": "adapter-name", "url": "adapter-url"}]
 ## Example
 
 ```python
-function = dh.new_function(
-    name="my-vllm-text-service",
+base_model = project.new_model(
+    name="base-model",
+    kind="huggingface",
+    path="hf://Qwen/Qwen2.5-7B-Instruct"
+)
+
+llm_function = project.new_function(
+    name="llama32-1b-v2",
+    model_name="test-model",
     kind="vllmserve-text",
-    url="s3://my-bucket/path-to-model"
+    url=base_model.key
 )
 ```
 

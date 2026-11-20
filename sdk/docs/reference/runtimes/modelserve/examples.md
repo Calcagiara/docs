@@ -74,13 +74,20 @@ run = function.run(action="serve")
 ## vLLM Text Model Example
 
 ```python
-function = project.new_function(
-    name="vllm-text-function",
-    kind="vllmserve-text",
-    url="hf://meta-llama/Meta-Llama-3-8B-Instruct",
+base_model = project.new_model(
+    name="base-model",
+    kind="huggingface",
+    path="hf://Qwen/Qwen2.5-7B-Instruct"
 )
 
-run = function.run(action="serve")
+llm_function = project.new_function(
+    name="llama32-1b-v2",
+    model_name="test-model",
+    kind="vllmserve-text",
+    url=base_model.key
+)
+
+run = llm_function.run(action="serve")
 ```
 
 ## Service Invocation
